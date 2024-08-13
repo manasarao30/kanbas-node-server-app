@@ -18,23 +18,34 @@ const app = express();
 app.use(
   cors({
     credentials: true,
-    // origin: process.env.NETLIFY_URL || "http://localhost:3000",
-    origin: true
+    origin: process.env.NETLIFY_URL || "http://localhost:3000"
+    // origin: true
   })
 );
+// const sessionOptions = {
+//   secret: process.env.SESSION_SECRET || "kanbas",
+//   resave: false,
+//   saveUninitialized: false,
+// };
+// if (process.env.NODE_ENV !== "development") {
+//   sessionOptions.proxy = true;
+//   sessionOptions.cookie = {
+//     sameSite: "none",
+//     secure: true,
+//     domain: process.env.NODE_SERVER_DOMAIN,
+//   };
+// }
+// app.use(session(sessionOptions));
+
 const sessionOptions = {
   secret: process.env.SESSION_SECRET || "kanbas",
   resave: false,
   saveUninitialized: false,
-};
-if (process.env.NODE_ENV !== "development") {
-  sessionOptions.proxy = true;
-  sessionOptions.cookie = {
-    sameSite: "none",
+  cookie: {
+    sameSite: "None",
     secure: true,
-    domain: process.env.NODE_SERVER_DOMAIN,
-  };
-}
+  },
+};
 app.use(session(sessionOptions));
 
 app.use(express.json());
