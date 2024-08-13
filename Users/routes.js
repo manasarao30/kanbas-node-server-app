@@ -53,6 +53,7 @@ export default function UserRoutes(app) {
     console.log(currentUser);
     if (currentUser) {
       req.session["currentUser"] = currentUser;
+      console.log("In Current User IF statement");
       console.log(req.session);
       res.json(currentUser);
     } else {
@@ -61,6 +62,8 @@ export default function UserRoutes(app) {
   };
 
   const profile = (req, res) => {
+    console.log("In Profile section");
+    console.log(req.session);
     const currentUser = req.session["currentUser"];
     if (!currentUser) {
       console.log("Not logged in");
