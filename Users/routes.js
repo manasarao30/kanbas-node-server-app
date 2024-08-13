@@ -80,9 +80,9 @@ export default function UserRoutes(app) {
     res.sendStatus(200);
   };
 
-  const account = async (req, res) => {
-    res.json(req.session['currentUser']);
-};
+//   const account = async (req, res) => {
+//     res.json(req.session['currentUser']);
+// };
 
   app.post("/api/users", createUser);
   app.get("/api/users", findAllUsers);
@@ -92,6 +92,6 @@ export default function UserRoutes(app) {
   app.post("/api/users/signup", signup);
   app.post("/api/users/signin", signin);
   app.post("/api/users/profile", profile);
-  app.post("/api/users/account", account);
+  // app.post("/api/users/account", account);
   app.post("/api/users/signout", signout);
 }
