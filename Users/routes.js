@@ -60,6 +60,8 @@ export default function UserRoutes(app) {
   const profile = (req, res) => {
     const currentUser = req.session["currentUser"];
     if (!currentUser) {
+      console.log("Not logged in");
+      console.log(currentUser);
       res.sendStatus(401);
       return;
     }
