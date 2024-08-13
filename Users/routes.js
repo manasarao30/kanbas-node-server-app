@@ -61,26 +61,18 @@ export default function UserRoutes(app) {
     }
   };
 
-  // const profile = (req, res) => {
-  //   console.log("In Profile section");
-  //   console.log(req.session);
-  //   const currentUser = req.session["currentUser"];
-  //   if (!currentUser) {
-  //     console.log("Not logged in");
-  //     console.log(currentUser);
-  //     res.sendStatus(401);
-  //     return;
-  //   }
-  //   res.json(currentUser);
-  // };
-  app.post("/api/users/profile", (req, res) => {
+  const profile = (req, res) => {
+    console.log("In Profile section");
+    console.log(req.session);
     const currentUser = req.session["currentUser"];
-    if (currentUser) {
-      res.json(currentUser);
-    } else {
-      res.status(401).send("Unauthorized");
+    if (!currentUser) {
+      console.log(currentUser);
+      res.sendStatus(401);
+      return;
     }
-  });
+    res.json(currentUser);
+  };
+ 
 
   const signout = (req, res) => {
     req.session.destroy();
@@ -96,6 +88,6 @@ export default function UserRoutes(app) {
   app.delete("/api/users/:userId", deleteUser);
   app.post("/api/users/signup", signup);
   app.post("/api/users/signin", signin);
-  // app.post("/api/users/profile", profile);
+  app.post("/api/users/profile", profile);
   app.post("/api/users/signout", signout);
 }
