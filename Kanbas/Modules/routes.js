@@ -19,7 +19,7 @@ export default function ModuleRoutes(app) {
       ...req.body,
       course: courseNumber,
     };
-    const module = await moduleDao.createModule(newModule); // No _id needed in req.body
+    const module = await moduleDao.createModule(newModule); 
     res.json(module);
   });
 

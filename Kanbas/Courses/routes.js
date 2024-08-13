@@ -25,7 +25,6 @@ export default function CourseRoutes(app) {
     res.json(courses);
   });
 
-  // Fetch a course by its number instead of its _id
   app.get("/api/courses/:number", async (req, res) => {
     const course = await courseDao.findCourseByNumber(req.params.number);
     res.json(course);

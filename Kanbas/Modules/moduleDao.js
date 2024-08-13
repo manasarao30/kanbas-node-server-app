@@ -9,11 +9,6 @@ export const findModuleById = (moduleId) => ModuleModel.findById(moduleId);
 
 export const createModule = (module) => ModuleModel.create(module);
 
-// export const createModule = (module) => {
-//   return ModuleModel.create(module);  
-// };
-
-
 export const updateModule = (moduleId, module) =>
   ModuleModel.updateOne({ _id: moduleId }, { $set: module });
 
