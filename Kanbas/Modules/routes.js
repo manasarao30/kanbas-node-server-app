@@ -13,6 +13,7 @@ export default function ModuleRoutes(app) {
   });
 
   app.delete("/api/modules/:mid", (req, res) => {
+    // delete module
     const { mid } = req.params;
     db.modules = db.modules.filter((m) => m._id !== mid);
     res.sendStatus(200);
